@@ -32,15 +32,15 @@ class MainActivity : AppCompatActivity() {
         serviceAdapter = NetworkServiceAdapter.getInstance(getApplication())
         setSupportActionBar(binding.appBarMain.toolbar)
 
-        val getButton: Button = findViewById(R.id.test_endpoint_button)
-        val getResultTextView : TextView = findViewById(R.id.get_result_text)
-        getButton.setOnClickListener {
-            NetworkServiceAdapter.getInstance(getApplication()).getAlbums({
-                getResultTextView.text = it.toString()
-            },{
-                //TODO: log error
-            })
-        }
+//        val getButton: Button = findViewById(R.id.test_endpoint_button)
+//        val getResultTextView : TextView = findViewById(R.id.get_result_text)
+//        getButton.setOnClickListener {
+//            NetworkServiceAdapter.getInstance(getApplication()).getAlbums({
+//                getResultTextView.text = it.toString()
+//            },{
+//                //TODO: log error
+//            })
+//        }
 
         binding.appBarMain.fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
