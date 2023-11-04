@@ -14,15 +14,14 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
-import com.android.volley.Response
-import com.example.vinilos.brokers.VolleyBroker
 import com.example.vinilos.databinding.ActivityMainBinding
+import com.example.vinilos.network.NetworkServiceAdapter
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
-    lateinit var volleyBroker: VolleyBroker
+    lateinit var serviceAdapter: NetworkServiceAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,22 +29,17 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        volleyBroker = VolleyBroker(this.applicationContext)
+        serviceAdapter = NetworkServiceAdapter.getInstance(getApplication())
         setSupportActionBar(binding.appBarMain.toolbar)
 
         val getButton: Button = findViewById(R.id.test_endpoint_button)
         val getResultTextView : TextView = findViewById(R.id.get_result_text)
         getButton.setOnClickListener {
-            volleyBroker.instance.add(VolleyBroker.getRequest("musicians",
-                Response.Listener<String> { response ->
-                    // Display the first 500 characters of the response string.
-                    getResultTextView.text = "Response is: ${response}"
-                },
-                Response.ErrorListener {
-                    Log.d("TAG", it.toString())
-                    getResultTextView.text = "That didn't work!"
-                }
-            ))
+            NetworkServiceAdapter.getInstance(getApplication()).getAlbums({
+                getResultTextView.text = it.toString()
+            },{
+                //TODO: log error
+            })
         }
 
         binding.appBarMain.fab.setOnClickListener { view ->
