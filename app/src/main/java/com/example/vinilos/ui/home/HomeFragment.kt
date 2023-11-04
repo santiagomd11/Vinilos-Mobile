@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vinilos.R
@@ -36,7 +37,8 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         recyclerView = binding.artistsRV// You need to add this RecyclerView to your layout
-        recyclerView.layoutManager = LinearLayoutManager(context)
+        val gridLayoutManager = GridLayoutManager(context, 2)
+        recyclerView.layoutManager = gridLayoutManager
         recyclerView.adapter = viewModelAdapter
         super.onViewCreated(view, savedInstanceState)
     }
