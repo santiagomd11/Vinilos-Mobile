@@ -1,22 +1,24 @@
 # Vinilos Android App
 
-Simple overview of use/purpose.
+Proyecto en Kotlin para el front-end de la aplicación Vinilos
 
-## Description
+### Ubicación del APK
+El APK generado se puede encontrar en la carpeta app/release
 
-An in-depth paragraph about your project and overview of use.
+### Generación del APK
+Para generar el apk a partir del código se deben seguir los siguientes pasos:
 
-## Getting Started
-
-### Dependencies
-
-* Describe any prerequisites, libraries, OS version, etc., needed before installing program.
-* ex. Windows 10
-
-### Installing
-
-* How/where to download your program
-* Any modifications needed to be made to files/folders
+* Abrir el proyecto en Android Studio
+* Dar click en Build -> Generate Signed Bundle/APK
+* En la ventana emergente seleccionar APK
+* Dar click en Next
+* En "key store path", seleccionar la ruta del archivo keystore.jks que se encuentra la carpeta raiz del repositorio
+* En "key store password" y "key password" escribir "123456"
+* En "key alias" poner key0, o cualquier otro nombre
+* Alternativamente, se puede dar click en "Create New" y crear una nueva llave.
+* Dar click en Next
+* Seleccionar la carpeta en la que se quiere guardar el apk y la opcion release
+* Dar click en Create 
 
 ### Executing program
 
