@@ -35,7 +35,8 @@ class MusiciansAdapter : RecyclerView.Adapter<MusiciansAdapter.MusicianViewHolde
         }
 
         holder.viewDataBinding.root.setOnClickListener { view ->
-            val bundle = bundleOf("artistId" to artist.id)
+            val bundle = bundleOf("artistId" to artist.id, "artistName" to artist.name,
+                "artistDescription" to artist.description, "artistImage" to artist.image)
             view.findNavController().navigate(R.id.nav_artist_detail, bundle)
         }
     }
