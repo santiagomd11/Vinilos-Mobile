@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
-import com.example.vinilos.R
 import com.example.vinilos.databinding.FragmentArtistDetailBinding
 
 
@@ -20,23 +19,24 @@ class ArtistDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-
         val homeViewModel =
             ViewModelProvider(this).get(ArtistDetailViewModel::class.java)
-        return inflater.inflate(R.layout.fragment_artist_detail, container, false)
+
+        _binding = FragmentArtistDetailBinding.inflate(inflater, container, false)
+        val root: View = binding.root
 
         val artistTitle: TextView = binding.artistTitle
         homeViewModel.artistTitle.observe(viewLifecycleOwner) {
-            artistTitle.text = it
+            artistTitle.text = arguments?.getInt("artistId").toString()
         }
 
-        val artistDescription: TextView = binding.artistTitle
+        val artistDescription: TextView = binding.artistDescription
         homeViewModel.artistDescription.observe(viewLifecycleOwner) {
             artistDescription.text = it
         }
 
+        return root
     }
-
 
 }
 

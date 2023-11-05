@@ -2,7 +2,9 @@ package com.example.vinilos.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vinilos.R
 import com.example.vinilos.databinding.ArtistItemBinding
@@ -27,17 +29,17 @@ class MusiciansAdapter : RecyclerView.Adapter<MusiciansAdapter.MusicianViewHolde
     }
 
     override fun onBindViewHolder(holder: MusicianViewHolder, position: Int) {
+        val artist = musicians[position]
         holder.viewDataBinding.also {
-            it.musician = musicians[position]
+            it.musician = artist
         }
-        // If you need to handle click events, you can do it here using holder.viewDataBinding.root
-        // Example click event (commented out):
-        /*
-        holder.viewDataBinding.root.setOnClickListener {
-            // Perform click handling, such as navigating to a detail screen.
+
+        holder.viewDataBinding.root.setOnClickListener { view ->
+            val bundle = bundleOf("artistId" to artist.id)
+            view.findNavController().navigate(R.id.nav_artist_detail, bundle)
         }
-        */
     }
+
 
     override fun getItemCount(): Int {
         return musicians.size
