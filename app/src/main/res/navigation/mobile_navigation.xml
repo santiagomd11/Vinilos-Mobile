@@ -30,7 +30,6 @@
     <fragment
         android:id="@+id/nav_artist_detail"
         android:name="com.example.vinilos.ui.artist_detail.ArtistDetailFragment"
-        android:label="Artist Detail"
         tools:layout="@layout/fragment_artist_detail" />
 
 </navigation>
