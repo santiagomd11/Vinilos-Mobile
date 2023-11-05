@@ -8,8 +8,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.vinilos.models.Album
 import com.example.vinilos.network.NetworkServiceAdapter
+import com.example.vinilos.repositories.AlbumRepository
 
 class AlbumsViewModel(application: Application) : AndroidViewModel(application) {
+
+    private val albumsRepository = AlbumRepository(application)
 
     private val _albums = MutableLiveData<List<Album>>()
 
@@ -31,7 +34,7 @@ class AlbumsViewModel(application: Application) : AndroidViewModel(application) 
     }
 
     private fun refreshDataFromNetwork() {
-        NetworkServiceAdapter.getInstance(getApplication()).getAlbums({
+        albumsRepository.refreshData({
             _albums.postValue(it)
             _eventNetworkError.value = false
             _isNetworkErrorShown.value = false
