@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="musician"
+            type="com.example.vinilos.models.Musician" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <ImageView
+                android:id="@+id/musicianImageView"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:contentDescription="@{musician.name}"
+                android:scaleType="centerCrop"
+                app:imageUrl="@{musician.image}" />
+
+            <TextView
+                android:id="@+id/musicianNameTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="4dp"
+                android:text="@{musician.name}"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/musicianYearTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                app:formattedDate="@{musician.birthDate}"
+                android:paddingBottom="4dp" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

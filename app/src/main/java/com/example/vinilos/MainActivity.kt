@@ -1,7 +1,10 @@
 package com.example.vinilos
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
+import android.widget.Button
+import android.widget.TextView
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
@@ -12,11 +15,13 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.example.vinilos.databinding.ActivityMainBinding
+import com.example.vinilos.network.NetworkServiceAdapter
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
+    lateinit var serviceAdapter: NetworkServiceAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +29,18 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        serviceAdapter = NetworkServiceAdapter.getInstance(getApplication())
         setSupportActionBar(binding.appBarMain.toolbar)
+
+//        val getButton: Button = findViewById(R.id.test_endpoint_button)
+//        val getResultTextView : TextView = findViewById(R.id.get_result_text)
+//        getButton.setOnClickListener {
+//            NetworkServiceAdapter.getInstance(getApplication()).getAlbums({
+//                getResultTextView.text = it.toString()
+//            },{
+//                //TODO: log error
+//            })
+//        }
 
         binding.appBarMain.fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -37,11 +53,13 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow
+                R.id.nav_home, R.id.nav_albums, R.id.nav_collectors
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
