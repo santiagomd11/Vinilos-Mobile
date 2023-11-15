@@ -13,4 +13,11 @@
     <string name="album_name_placeholder">Nombre del Album</string>
     <string name="album_description_placeholder">Descripcion album</string>
     <string name="title_albums">Albumes</string>
+    <string name="save">Guardar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="birthDate">Fecha de nacimiento</string>
+    <string name="required">Requerido</string>
+    <string name="picture">Imagen</string>
+    <string name="description">Descripcion</string>
+    <string name="name">Nombre</string>
 </resources>
