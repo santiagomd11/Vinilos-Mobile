@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.vinilos.R
 import com.example.vinilos.databinding.FragmentCreateAlbumBinding
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -43,16 +44,40 @@ class CreateAlbumFragment : Fragment() {
 
         binding.saveAlbumButton.setOnClickListener {
             if(TextUtils.isEmpty(binding.textNameField.text.toString())){
-                binding.nameTextInputLayout.error = "El nombre es obligatorio"
+                binding.nameTextInputLayout.error = getString(R.string.requiredName)
             }
-            else if(TextUtils.isEmpty(binding.textImageField.text.toString())){
-                binding.imageTextInputLayout.error = "La imagen es obligatoria"
+            else{
+                binding.nameTextInputLayout.error = null
             }
-            else if(TextUtils.isEmpty(binding.textDescriptionField.text.toString())){
-                binding.descriptionTextInputLayout.error = "La descripcion es obligatoria"
+            if(TextUtils.isEmpty(binding.textCoverField.text.toString())){
+                binding.coverTextInputLayout.error = getString(R.string.requiredCover)
             }
-            else if(TextUtils.isEmpty(binding.textBirthDateField.text.toString())){
-                binding.birthDateTextInputLayout.error = "La fecha de nacimiento es obligatoria"
+            else{
+                binding.coverTextInputLayout.error = null
+            }
+            if(TextUtils.isEmpty(binding.textDescriptionField.text.toString())){
+                binding.descriptionTextInputLayout.error = getString(R.string.requiredDescription)
+            }
+            else{
+                binding.descriptionTextInputLayout.error = null
+            }
+            if(TextUtils.isEmpty(binding.textReleaseDateField.text.toString())){
+                binding.releaseDateTextInputLayout.error = getString(R.string.requiredReleaseDate)
+            }
+            else{
+                binding.releaseDateTextInputLayout.error = null
+            }
+            if(TextUtils.isEmpty(binding.textGenreField.text.toString())){
+                binding.genreTextInputLayout.error = getString(R.string.requiredGenre)
+            }
+            else{
+                binding.genreTextInputLayout.error = null
+            }
+            if(TextUtils.isEmpty(binding.textLabelField.text.toString())){
+                binding.labelTextInputLayout.error = getString(R.string.requiredRecordLabel)
+            }
+            else{
+                binding.labelTextInputLayout.error = null
             }
 
         }
@@ -65,7 +90,7 @@ class CreateAlbumFragment : Fragment() {
                 myCalendar[Calendar.DAY_OF_MONTH] = day
                 updateLabel()
             }
-        binding.textBirthDateField.setOnClickListener(View.OnClickListener {
+        binding.textReleaseDateField.setOnClickListener(View.OnClickListener {
             DatePickerDialog(
                 this.context as Context,
                 date,
@@ -81,7 +106,7 @@ class CreateAlbumFragment : Fragment() {
     private fun updateLabel() {
         val myFormat = "MM/dd/yy"
         val dateFormat = SimpleDateFormat(myFormat, Locale.US)
-        binding.textBirthDateField.setText(dateFormat.format(myCalendar.time))
+        binding.textReleaseDateField.setText(dateFormat.format(myCalendar.time))
     }
 
 
