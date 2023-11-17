@@ -8,12 +8,15 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vinilos.R
 import com.example.vinilos.databinding.FragmentAlbumsBinding
 import com.example.vinilos.models.Album
 import com.example.vinilos.ui.adapters.AlbumsAdapter
+import com.google.android.material.snackbar.Snackbar
+
 class AlbumsFragment : Fragment() {
     private var _binding: FragmentAlbumsBinding? = null
     private val binding get() = _binding!!
@@ -36,6 +39,10 @@ class AlbumsFragment : Fragment() {
         val gridLayoutManager = GridLayoutManager(context, 2)
         recyclerView.layoutManager = gridLayoutManager
         recyclerView.adapter = viewModelAdapter
+
+        binding.fab.setOnClickListener { view ->
+            view.findNavController().navigate(R.id.action_nav_albums_to_nav_create_album)
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

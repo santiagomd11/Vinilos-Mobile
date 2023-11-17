@@ -13,4 +13,21 @@
     <string name="album_name_placeholder">Nombre del Album</string>
     <string name="album_description_placeholder">Descripcion album</string>
     <string name="title_albums">Albumes</string>
+    <string name="save">Guardar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="birthDate">Fecha de nacimiento</string>
+    <string name="required">Requerido</string>
+    <string name="picture">Imagen</string>
+    <string name="description">Descripcion</string>
+    <string name="name">Nombre</string>
+    <string name="releaseDate">Fecha de lanzamiento</string>
+    <string name="cover">Portada</string>
+    <string name="genre">Género</string>
+    <string name="label">Sello discográfico</string>
+    <string name="requiredName">El nombre es obligatorio</string>
+    <string name="requiredCover">La imagen de portada es obligatoria</string>
+    <string name="requiredDescription">La descripción es obligatoria</string>
+    <string name="requiredReleaseDate">La fecha de lanzamiento es obligatoria</string>
+    <string name="requiredGenre">El género es obligatorio</string>
+    <string name="requiredRecordLabel">El sello discográfico es obligatorio</string>
 </resources>
