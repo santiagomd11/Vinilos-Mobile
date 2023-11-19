@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">Vinilos</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Menu</string>
     <string name="nav_header_subtitle"> </string>
     <string name="nav_header_desc">Navigation header</string>
@@ -13,4 +11,22 @@
     <string name="album_name_placeholder">Nombre del Album</string>
     <string name="album_description_placeholder">Descripcion album</string>
     <string name="title_albums">Albumes</string>
+    <string name="save">Guardar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="birthDate">Fecha de nacimiento</string>
+    <string name="required">Requerido</string>
+    <string name="picture">Imagen</string>
+    <string name="description">Descripcion</string>
+    <string name="name">Nombre</string>
+    <string name="releaseDate">Fecha de lanzamiento</string>
+    <string name="cover">Portada</string>
+    <string name="genre">Género</string>
+    <string name="label">Sello discográfico</string>
+    <string name="requiredName">El nombre es obligatorio</string>
+    <string name="requiredCover">La imagen de portada es obligatoria</string>
+    <string name="requiredDescription">La descripción es obligatoria</string>
+    <string name="requiredReleaseDate">La fecha de lanzamiento es obligatoria</string>
+    <string name="requiredGenre">El género es obligatorio</string>
+    <string name="requiredRecordLabel">El sello discográfico es obligatorio</string>
+    <string name="album_full_description">%1$s\n\nGenre: %2$s\nLabel: %3$s\nRelease Date: %4$s</string>
 </resources>

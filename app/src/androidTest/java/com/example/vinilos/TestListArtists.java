@@ -42,7 +42,7 @@ public class TestListArtists {
         Espresso.onView(ViewMatchers.withId(R.id.artistsRV))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(2, ViewActions.click()));
 
-        Thread.sleep(500);
+        Thread.sleep(3000);
 
         Espresso.onView(ViewMatchers.withId(R.id.artistTitle))
                 .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
