@@ -45,6 +45,29 @@ class NetworkServiceAdapter constructor(context: Context) {
                 onError(it)
             }))
     }
+
+    fun getAlbumById(albumId: Int, onComplete: (album: Album) -> Unit, onError: (error: VolleyError) -> Unit) {
+        val url = "${BASE_URL}albums/$albumId" // Adjust the endpoint as needed.
+
+        val jsonObjectRequest = JsonObjectRequest(Request.Method.GET, url, null,
+            Response.Listener { response ->
+                val album = Album(
+                    albumId = response.getInt("id"),
+                    name = response.getString("name"),
+                    cover = response.getString("cover"),
+                    recordLabel = response.getString("recordLabel"),
+                    releaseDate = response.getString("releaseDate"),
+                    genre = response.getString("genre"),
+                    description = response.getString("description")
+                )
+                onComplete(album)
+            },
+            Response.ErrorListener { error ->
+                onError(error)
+            })
+
+        requestQueue.add(jsonObjectRequest)
+    }
     fun getCollectors(onComplete:(resp:List<Collector>)->Unit, onError: (error:VolleyError)->Unit) {
         requestQueue.add(getRequest("collectors",
             Response.Listener<String> { response ->
@@ -101,6 +124,7 @@ class NetworkServiceAdapter constructor(context: Context) {
                 onError(it)
             }))
     }
+
     private fun getRequest(path:String, responseListener: Response.Listener<String>, errorListener: Response.ErrorListener): StringRequest {
         return StringRequest(Request.Method.GET, BASE_URL+path, responseListener,errorListener)
     }
