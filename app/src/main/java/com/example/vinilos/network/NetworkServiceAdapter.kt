@@ -125,6 +125,18 @@ class NetworkServiceAdapter constructor(context: Context) {
             }))
     }
 
+    fun addTrackToAlbum(body: JSONObject, albumId: Int, onComplete:(resp:JSONObject)->Unit , onError: (error:VolleyError)->Unit){
+        requestQueue.add(postRequest("albums/$albumId/tracks",
+            body,
+            Response.Listener<JSONObject> { response ->
+                Log.d("resp", response.toString())
+                onComplete(response)
+            },
+            Response.ErrorListener {
+                onError(it)
+            }))
+    }
+
     private fun getRequest(path:String, responseListener: Response.Listener<String>, errorListener: Response.ErrorListener): StringRequest {
         return StringRequest(Request.Method.GET, BASE_URL+path, responseListener,errorListener)
     }

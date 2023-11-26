@@ -11,9 +11,11 @@ import com.example.vinilos.network.NetworkServiceAdapter
 
 class AddTrackToAlbumViewModel(application: Application) : AndroidViewModel(application)  {
     private val _albumDetails = MutableLiveData<Album>()
+    private var albumId = 0
     val albumDetails: LiveData<Album> = _albumDetails
 
     fun fetchAlbumDetails(albumId: Int) {
+        this.albumId = albumId
         NetworkServiceAdapter.getInstance(getApplication()).getAlbumById(albumId,
             onComplete = { album ->
                 _albumDetails.postValue(album)

@@ -31,4 +31,10 @@
     <string name="album_full_description">%1$s\n\nGenre: %2$s\nLabel: %3$s\nRelease Date: %4$s</string>
     <string name="add_song">Agregar Canción</string>
     <string name="album_detail">Detalle del Álbum</string>
+    <string name="length_track">Duración</string>
+    <string name="success">Éxito</string>
+    <string name="track_added_success">Canción agregada exitosamente</string>
+    <string name="track_added_error">Error al agregar canción</string>
+    <string name="requiredLength">La duración es obligatoria</string>
+    <string name="invalid_track_length">El formato de la duración es inválido</string>
 </resources>

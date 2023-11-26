@@ -39,7 +39,13 @@ class AlbumDetailFragment : Fragment() {
         binding.fab1.setOnClickListener { view ->
             val album = viewModel.albumDetails.value
             val bundle = bundleOf(
-                "albumName" to album?.name
+                "albumId" to album?.albumId,
+                "albumName" to album?.name,
+                "albumDescription" to album?.description,
+                "albumImage" to album?.cover,
+                "albumGenre" to album?.genre,
+                "albumReleaseDate" to album?.releaseDate,
+                "albumRecordLabel" to album?.recordLabel
             )
             view.findNavController().navigate(R.id.action_nav_album_detail_to_nav_add_track_to_album, bundle)
         }
