@@ -5,9 +5,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.bumptech.glide.Glide
 import com.example.vinilos.R
 import com.example.vinilos.databinding.FragmentAlbumDetailBinding
@@ -25,10 +28,20 @@ class AlbumDetailFragment : Fragment() {
         _binding = FragmentAlbumDetailBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this).get(AlbumDetailViewModel::class.java)
 
+        (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.album_detail)
+
         arguments?.getInt("albumId")?.let { albumId ->
             if (albumId != -1) {
                 viewModel.fetchAlbumDetails(albumId)
             }
+        }
+
+        binding.fab1.setOnClickListener { view ->
+            val album = viewModel.albumDetails.value
+            val bundle = bundleOf(
+                "albumName" to album?.name
+            )
+            view.findNavController().navigate(R.id.action_nav_album_detail_to_nav_add_track_to_album, bundle)
         }
 
         observeViewModel()
