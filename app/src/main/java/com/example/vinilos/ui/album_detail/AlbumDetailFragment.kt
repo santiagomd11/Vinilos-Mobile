@@ -67,6 +67,10 @@ class AlbumDetailFragment : Fragment() {
             binding.albumReleaseDate.text = "Fecha de lanzamiento: ${formatReleaseDate(album.releaseDate)}"
 
             // Lastly, set the description text
+            for (track in album.tracks){
+                binding.albumTracks.text = binding.albumTracks.text.toString() + "${track.name} - ${track.duration} \n"
+            }
+
             binding.albumDescription.text = album.description
         })
     }

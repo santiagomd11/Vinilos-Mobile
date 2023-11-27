@@ -12,6 +12,7 @@ import com.android.volley.toolbox.Volley
 import com.example.vinilos.models.Album
 import com.example.vinilos.models.Collector
 import com.example.vinilos.models.Musician
+import com.example.vinilos.models.Track
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -37,7 +38,7 @@ class NetworkServiceAdapter constructor(context: Context) {
                 val list = mutableListOf<Album>()
                 for (i in 0 until resp.length()) {
                     val item = resp.getJSONObject(i)
-                    list.add(i, Album(albumId = item.getInt("id"),name = item.getString("name"), cover = item.getString("cover"), recordLabel = item.getString("recordLabel"), releaseDate = item.getString("releaseDate"), genre = item.getString("genre"), description = item.getString("description")))
+                    list.add(i, Album(albumId = item.getInt("id"),name = item.getString("name"), cover = item.getString("cover"), recordLabel = item.getString("recordLabel"), releaseDate = item.getString("releaseDate"), genre = item.getString("genre"), description = item.getString("description"), tracks = arrayOf<Track>()))
                 }
                 onComplete(list)
             },
@@ -51,6 +52,13 @@ class NetworkServiceAdapter constructor(context: Context) {
 
         val jsonObjectRequest = JsonObjectRequest(Request.Method.GET, url, null,
             Response.Listener { response ->
+                var tracksJson = JSONArray(response.getString("tracks"))
+                var trackList = mutableListOf<Track>()
+                for (i in 0 until tracksJson.length()) {
+                    val item = tracksJson.getJSONObject(i)
+                    trackList.add(i, Track(name = item.getString("name"), duration = item.getString("duration")))
+                }
+
                 val album = Album(
                     albumId = response.getInt("id"),
                     name = response.getString("name"),
@@ -58,8 +66,10 @@ class NetworkServiceAdapter constructor(context: Context) {
                     recordLabel = response.getString("recordLabel"),
                     releaseDate = response.getString("releaseDate"),
                     genre = response.getString("genre"),
-                    description = response.getString("description")
+                    description = response.getString("description"),
+                    tracks = trackList.toTypedArray()
                 )
+
                 onComplete(album)
             },
             Response.ErrorListener { error ->

@@ -37,4 +37,5 @@
     <string name="track_added_error">Error al agregar canción</string>
     <string name="requiredLength">La duración es obligatoria</string>
     <string name="invalid_track_length">El formato de la duración es inválido</string>
+    <string name="tracks">Canciones</string>
 </resources>
