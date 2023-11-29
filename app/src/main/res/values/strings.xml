@@ -38,4 +38,7 @@
     <string name="requiredLength">La duración es obligatoria</string>
     <string name="invalid_track_length">El formato de la duración es inválido</string>
     <string name="tracks">Canciones</string>
+    <string name="create_album_success">Album creado exitosamente</string>
+    <string name="create_album_error">Error al crear album</string>
+    <string name="create_album">Crear álbum</string>
 </resources>
