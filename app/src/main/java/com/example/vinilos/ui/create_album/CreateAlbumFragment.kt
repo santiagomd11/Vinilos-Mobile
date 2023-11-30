@@ -144,7 +144,7 @@ class CreateAlbumFragment : Fragment() {
         alertDialog.apply {
             //setIcon(R.drawable.ic_hello)
             setTitle("Hello")
-            setMessage("Album creado exitosamente")
+            setMessage(getString(R.string.create_album_success))
 //            setPositiveButton("Positive") { _: DialogInterface?, _: Int ->
 //                Toast.makeText(context, "Hello", Toast.LENGTH_SHORT).show()
 //            }
@@ -167,25 +167,11 @@ class CreateAlbumFragment : Fragment() {
         val alertDialog = AlertDialog.Builder(context)
         val errorMessage = JSONObject(String(error.networkResponse.data))["message"] as String
         alertDialog.apply {
-            //setIcon(R.drawable.ic_hello)
-            setTitle("Error al crear album")
+            setTitle(getString(R.string.create_album_error))
             setMessage(errorMessage)
-//            setPositiveButton("Positive") { _: DialogInterface?, _: Int ->
-//                Toast.makeText(context, "Hello", Toast.LENGTH_SHORT).show()
-//            }
-//            setNegativeButton("Negative") { _, _ ->
-//                Toast.makeText(context, "Negative", Toast.LENGTH_SHORT).show()
-//            }
-            setNeutralButton("Neutral") { _, _ ->
-                //Toast.makeText(context, "Cerrar", Toast.LENGTH_SHORT).show()
+            setNeutralButton(R.string.cancel) { _, _ ->
             }
-//            setOnDismissListener {
-//                Toast.makeText(context, "Hello!!!", Toast.LENGTH_SHORT).show()
-//            }
-
         }.create().show()
-
-        //
     }
 
 
