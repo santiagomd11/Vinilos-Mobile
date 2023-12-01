@@ -95,6 +95,27 @@ class NetworkServiceAdapter constructor(context: Context) {
                 Log.d("", it.message.toString())
             }))
     }
+
+    fun getCollectorById(collectorId: Int, onComplete: (album: Collector) -> Unit, onError: (error: VolleyError) -> Unit) {
+        val url = "${BASE_URL}collectors/$collectorId"
+
+        val jsonObjectRequest = JsonObjectRequest(Request.Method.GET, url, null,
+            Response.Listener { response ->
+                val collector = Collector(
+                    collectorId = response.getInt("id"),
+                    name = response.getString("name"),
+                    telephone = response.getString("telephone"),
+                    email = response.getString("email")
+                )
+
+                onComplete(collector)
+            },
+            Response.ErrorListener { error ->
+                onError(error)
+            })
+
+        requestQueue.add(jsonObjectRequest)
+    }
     fun getMusicians(onComplete:(resp:List<Musician>)->Unit, onError: (error:VolleyError)->Unit) {
         requestQueue.add(getRequest("musicians",
             Response.Listener<String> { response ->
