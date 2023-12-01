@@ -36,7 +36,7 @@ class CollectorsAdapter : RecyclerView.Adapter<CollectorsAdapter.CollectorViewHo
         holder.viewDataBinding.root.setOnClickListener { view ->
             val bundle = bundleOf("collectorId" to collector.collectorId, "name" to collector.name,
                 "email" to collector.email, "telephone" to collector.telephone)
-            view.findNavController().navigate(R.id.nav_artist_detail, bundle)
+            view.findNavController().navigate(R.id.nav_collector_detail, bundle)
         }
     }
 
