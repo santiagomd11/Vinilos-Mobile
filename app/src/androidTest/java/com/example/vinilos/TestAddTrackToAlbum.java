@@ -61,7 +61,7 @@ public class TestAddTrackToAlbum {
 
         Thread.sleep(500);
 
-        Espresso.onView(ViewMatchers.withText("Canción agregada exitosamente"))
+        Espresso.onView(ViewMatchers.withText("Song added successfully"))
                 .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
     }
 
@@ -84,7 +84,7 @@ public class TestAddTrackToAlbum {
 
         Espresso.onView(withId(R.id.saveTrackButton)).perform(click());
 
-        Espresso.onView(ViewMatchers.withText("El nombre es obligatorio"))
+        Espresso.onView(ViewMatchers.withText("Name is required"))
                 .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
     }
 
@@ -107,7 +107,7 @@ public class TestAddTrackToAlbum {
 
         Espresso.onView(withId(R.id.saveTrackButton)).perform(click());
 
-        Espresso.onView(ViewMatchers.withText("La duración es obligatoria"))
+        Espresso.onView(ViewMatchers.withText("Length is required"))
                 .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
     }
 
