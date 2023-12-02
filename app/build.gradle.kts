@@ -60,5 +60,6 @@ dependencies {
     androidTestImplementation("com.android.support.test:runner:1.0.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     implementation("com.github.bumptech.glide:glide:4.13.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
     kapt("com.github.bumptech.glide:compiler:4.13.0")
 }
