@@ -39,5 +39,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/album_item" />
+        tools:listitem="@layout/album_item"
+        android:contentDescription="Aquí se muestra el listado de albumes" />
 </androidx.constraintlayout.widget.ConstraintLayout>
