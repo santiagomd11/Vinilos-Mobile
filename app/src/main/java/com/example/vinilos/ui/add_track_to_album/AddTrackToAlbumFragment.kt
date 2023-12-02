@@ -15,7 +15,6 @@ import com.example.vinilos.R
 import com.example.vinilos.databinding.FragmentAddTrackToAlbumBinding
 import com.example.vinilos.network.NetworkServiceAdapter
 import org.json.JSONObject
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
@@ -49,7 +48,7 @@ class AddTrackToAlbumFragment : Fragment() {
                 val newTrack = JSONObject()
                 newTrack.put("name", binding.textNameField.text.toString())
                 newTrack.put("duration", binding.textLengthField.text.toString())
-                NetworkServiceAdapter.instance?.addTrackToAlbum(body = newTrack, albumId = arguments?.getInt("albumId")!!, onComplete = {addTrackSuccess(it)}, onError = {addTrackFailure(it)})
+                NetworkServiceAdapter.instance?.addTrackToAlbum(body = newTrack, albumId = arguments?.getInt("albumId")!!, onComplete = {addTrackSuccess()}, onError = {addTrackFailure(it)})
             }
 
         }
@@ -90,7 +89,7 @@ class AddTrackToAlbumFragment : Fragment() {
         return result
     }
 
-    fun addTrackSuccess(jsonObject: JSONObject){
+    fun addTrackSuccess(){
         val alertDialog = AlertDialog.Builder(context)
         alertDialog.apply {
             setTitle("")

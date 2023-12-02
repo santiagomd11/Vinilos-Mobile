@@ -8,14 +8,10 @@
     <string name="menu_home">Artists</string>
     <string name="menu_albums">Albums</string>
     <string name="menu_collectors">Collectionists</string>
-    <string name="album_name_placeholder">Album Name</string>
-    <string name="album_description_placeholder">Album description</string>
     <string name="title_albums">Albums</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
-    <string name="birthDate">Birth date</string>
     <string name="required">Required</string>
-    <string name="picture">Image</string>
     <string name="description">Description</string>
     <string name="name">Name</string>
     <string name="releaseDate">Release date</string>
@@ -28,7 +24,6 @@
     <string name="requiredReleaseDate">Release date is required</string>
     <string name="requiredGenre">Genre is required</string>
     <string name="requiredRecordLabel">Record label is required</string>
-    <string name="album_full_description">"  "</string>
     <string name="add_song">Add song</string>
     <string name="album_detail">Album detail</string>
     <string name="length_track">Length</string>
