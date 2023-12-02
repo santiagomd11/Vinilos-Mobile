@@ -65,7 +65,6 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
-        android:id="@+id/lh"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:gravity="center"

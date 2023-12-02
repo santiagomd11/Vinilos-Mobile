@@ -4,19 +4,16 @@ import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
 import android.content.Context
-import android.content.DialogInterface
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.android.volley.VolleyError
 import com.example.vinilos.R
 import com.example.vinilos.databinding.FragmentCreateAlbumBinding
-import com.example.vinilos.models.Album
 import com.example.vinilos.network.NetworkServiceAdapter
 import org.json.JSONObject
 import java.text.SimpleDateFormat
@@ -59,7 +56,7 @@ class CreateAlbumFragment : Fragment() {
                 newAlbum.put("description",binding.textDescriptionField.text.toString())
                 newAlbum.put("genre", binding.textGenreField.text.toString())
                 newAlbum.put("recordLabel", binding.textLabelField.text.toString())
-                NetworkServiceAdapter.instance?.createAlbum(body = newAlbum, onComplete = {createAlbumSuccess(it)}, onError = {createAlbumFailure(it)})
+                NetworkServiceAdapter.instance?.createAlbum(body = newAlbum, onComplete = {createAlbumSuccess()}, onError = {createAlbumFailure(it)})
             }
 
         }
@@ -138,7 +135,7 @@ class CreateAlbumFragment : Fragment() {
         return result
     }
 
-    fun createAlbumSuccess(jsonObject: JSONObject){
+    fun createAlbumSuccess(){
         val alertDialog = AlertDialog.Builder(context)
 
         alertDialog.apply {
