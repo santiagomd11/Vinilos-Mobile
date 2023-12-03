@@ -82,7 +82,11 @@ public class TestAddTrackToAlbum {
 
         Espresso.onView(withId(R.id.fab1)).perform(click());
 
+        Thread.sleep(500);
+
         Espresso.onView(withId(R.id.saveTrackButton)).perform(click());
+
+        Thread.sleep(100);
 
         Espresso.onView(ViewMatchers.withText("Name is required"))
                 .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
@@ -105,7 +109,11 @@ public class TestAddTrackToAlbum {
 
         Espresso.onView(withId(R.id.fab1)).perform(click());
 
+        Thread.sleep(500);
+
         Espresso.onView(withId(R.id.saveTrackButton)).perform(click());
+
+        Thread.sleep(100);
 
         Espresso.onView(ViewMatchers.withText("Length is required"))
                 .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
