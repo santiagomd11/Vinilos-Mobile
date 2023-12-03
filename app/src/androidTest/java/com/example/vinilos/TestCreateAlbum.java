@@ -69,7 +69,7 @@ public class TestCreateAlbum {
 
         Thread.sleep(200);
 
-        Espresso.onView(ViewMatchers.withText("El nombre es obligatorio"))
+        Espresso.onView(ViewMatchers.withText("Name is required"))
                 .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
     }
 
@@ -90,7 +90,7 @@ public class TestCreateAlbum {
 
         Thread.sleep(200);
 
-        Espresso.onView(ViewMatchers.withText("La imagen de portada es obligatoria"))
+        Espresso.onView(ViewMatchers.withText("Cover is required"))
                 .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
     }
 
@@ -111,7 +111,7 @@ public class TestCreateAlbum {
 
         Thread.sleep(200);
 
-        Espresso.onView(ViewMatchers.withText("La descripción es obligatoria"))
+        Espresso.onView(ViewMatchers.withText("Description is required"))
                 .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
     }
 
@@ -132,7 +132,7 @@ public class TestCreateAlbum {
 
         Thread.sleep(200);
 
-        Espresso.onView(ViewMatchers.withText("La fecha de lanzamiento es obligatoria"))
+        Espresso.onView(ViewMatchers.withText("Release date is required"))
                 .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
     }
 
@@ -153,7 +153,7 @@ public class TestCreateAlbum {
 
         Thread.sleep(200);
 
-        Espresso.onView(ViewMatchers.withText("El género es obligatorio"))
+        Espresso.onView(ViewMatchers.withText("Genre is required"))
                 .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
     }
 
@@ -174,7 +174,7 @@ public class TestCreateAlbum {
 
         Thread.sleep(200);
 
-        Espresso.onView(ViewMatchers.withText("El sello discográfico es obligatorio"))
+        Espresso.onView(ViewMatchers.withText("Record label is required"))
                 .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
     }
 
@@ -218,7 +218,7 @@ public class TestCreateAlbum {
 
         Thread.sleep(200);
 
-        Espresso.onView(ViewMatchers.withText("Error al crear album"))
+        Espresso.onView(ViewMatchers.withText("Error creating album"))
                 .inRoot(RootMatchers.isDialog())
                 .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
 
@@ -265,7 +265,7 @@ public class TestCreateAlbum {
 
         Thread.sleep(200);
 
-        Espresso.onView(ViewMatchers.withText("Error al crear album"))
+        Espresso.onView(ViewMatchers.withText("Error creating album"))
                 .inRoot(RootMatchers.isDialog())
                 .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
 
@@ -313,7 +313,7 @@ public class TestCreateAlbum {
 
         Espresso.onView(withId(R.id.saveAlbumButton)).perform(click());
 
-        Espresso.onView(ViewMatchers.withText("Album creado exitosamente"))
+        Espresso.onView(ViewMatchers.withText("Album created successfully"))
                 .inRoot(RootMatchers.isDialog())
                 .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
 

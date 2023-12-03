@@ -15,6 +15,9 @@ import com.example.vinilos.models.Musician
 import com.example.vinilos.models.Track
 import org.json.JSONArray
 import org.json.JSONObject
+import kotlin.coroutines.resume
+import kotlin.coroutines.resumeWithException
+import kotlin.coroutines.suspendCoroutine
 
 class NetworkServiceAdapter constructor(context: Context) {
     companion object{
@@ -31,7 +34,7 @@ class NetworkServiceAdapter constructor(context: Context) {
         // applicationContext keeps you from leaking the Activity or BroadcastReceiver if someone passes one in.
         Volley.newRequestQueue(context.applicationContext)
     }
-    fun getAlbums(onComplete:(resp:List<Album>)->Unit, onError: (error:VolleyError)->Unit){
+    suspend fun getAlbums() = suspendCoroutine<List<Album>>{cont ->
         requestQueue.add(getRequest("albums",
             Response.Listener<String> { response ->
                 val resp = JSONArray(response)
@@ -40,10 +43,10 @@ class NetworkServiceAdapter constructor(context: Context) {
                     val item = resp.getJSONObject(i)
                     list.add(i, Album(albumId = item.getInt("id"),name = item.getString("name"), cover = item.getString("cover"), recordLabel = item.getString("recordLabel"), releaseDate = item.getString("releaseDate"), genre = item.getString("genre"), description = item.getString("description"), tracks = arrayOf<Track>()))
                 }
-                onComplete(list)
+                cont.resume(list)
             },
             Response.ErrorListener {
-                onError(it)
+                cont.resumeWithException(it)
             }))
     }
 
@@ -78,7 +81,7 @@ class NetworkServiceAdapter constructor(context: Context) {
 
         requestQueue.add(jsonObjectRequest)
     }
-    fun getCollectors(onComplete:(resp:List<Collector>)->Unit, onError: (error:VolleyError)->Unit) {
+    suspend fun getCollectors() = suspendCoroutine<List<Collector>> { cont ->
         requestQueue.add(getRequest("collectors",
             Response.Listener<String> { response ->
                 Log.d("tagb", response)
@@ -88,28 +91,46 @@ class NetworkServiceAdapter constructor(context: Context) {
                     val item = resp.getJSONObject(i)
                     list.add(i, Collector(collectorId = item.getInt("id"),name = item.getString("name"), telephone = item.getString("telephone"), email = item.getString("email")))
                 }
-                onComplete(list)
+                cont.resume(list)
             },
             Response.ErrorListener {
-                onError(it)
-                Log.d("", it.message.toString())
+                cont.resumeWithException(it)
             }))
     }
-    fun getMusicians(onComplete:(resp:List<Musician>)->Unit, onError: (error:VolleyError)->Unit) {
+
+    fun getCollectorById(collectorId: Int, onComplete: (album: Collector) -> Unit, onError: (error: VolleyError) -> Unit) {
+        val url = "${BASE_URL}collectors/$collectorId"
+
+        val jsonObjectRequest = JsonObjectRequest(Request.Method.GET, url, null,
+            Response.Listener { response ->
+                val collector = Collector(
+                    collectorId = response.getInt("id"),
+                    name = response.getString("name"),
+                    telephone = response.getString("telephone"),
+                    email = response.getString("email")
+                )
+
+                onComplete(collector)
+            },
+            Response.ErrorListener { error ->
+                onError(error)
+            })
+
+        requestQueue.add(jsonObjectRequest)
+    }
+    suspend fun getMusicians() = suspendCoroutine<List<Musician>> { cont ->
         requestQueue.add(getRequest("musicians",
             Response.Listener<String> { response ->
-                Log.d("tagb", response)
                 val resp = JSONArray(response)
                 val list = mutableListOf<Musician>()
                 for (i in 0 until resp.length()) {
                     val item = resp.getJSONObject(i)
                     list.add(i, Musician(id = item.getInt("id"),name = item.getString("name"), image = item.getString("image"), description = item.getString("description"), birthDate = item.getString("birthDate")))
                 }
-                onComplete(list)
+                cont.resume(list)
             },
             Response.ErrorListener {
-                onError(it)
-                Log.d("", it.message.toString())
+                cont.resumeWithException(it)
             }))
     }
     fun postComment(body: JSONObject, albumId: Int,  onComplete:(resp:JSONObject)->Unit , onError: (error:VolleyError)->Unit){

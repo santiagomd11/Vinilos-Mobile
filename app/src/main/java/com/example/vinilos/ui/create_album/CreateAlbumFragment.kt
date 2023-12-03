@@ -4,19 +4,16 @@ import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
 import android.content.Context
-import android.content.DialogInterface
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.android.volley.VolleyError
 import com.example.vinilos.R
 import com.example.vinilos.databinding.FragmentCreateAlbumBinding
-import com.example.vinilos.models.Album
 import com.example.vinilos.network.NetworkServiceAdapter
 import org.json.JSONObject
 import java.text.SimpleDateFormat
@@ -59,7 +56,7 @@ class CreateAlbumFragment : Fragment() {
                 newAlbum.put("description",binding.textDescriptionField.text.toString())
                 newAlbum.put("genre", binding.textGenreField.text.toString())
                 newAlbum.put("recordLabel", binding.textLabelField.text.toString())
-                NetworkServiceAdapter.instance?.createAlbum(body = newAlbum, onComplete = {createAlbumSuccess(it)}, onError = {createAlbumFailure(it)})
+                NetworkServiceAdapter.instance?.createAlbum(body = newAlbum, onComplete = {createAlbumSuccess()}, onError = {createAlbumFailure(it)})
             }
 
         }
@@ -138,13 +135,13 @@ class CreateAlbumFragment : Fragment() {
         return result
     }
 
-    fun createAlbumSuccess(jsonObject: JSONObject){
+    fun createAlbumSuccess(){
         val alertDialog = AlertDialog.Builder(context)
 
         alertDialog.apply {
             //setIcon(R.drawable.ic_hello)
             setTitle("Hello")
-            setMessage("Album creado exitosamente")
+            setMessage(getString(R.string.create_album_success))
 //            setPositiveButton("Positive") { _: DialogInterface?, _: Int ->
 //                Toast.makeText(context, "Hello", Toast.LENGTH_SHORT).show()
 //            }
@@ -167,25 +164,11 @@ class CreateAlbumFragment : Fragment() {
         val alertDialog = AlertDialog.Builder(context)
         val errorMessage = JSONObject(String(error.networkResponse.data))["message"] as String
         alertDialog.apply {
-            //setIcon(R.drawable.ic_hello)
-            setTitle("Error al crear album")
+            setTitle(getString(R.string.create_album_error))
             setMessage(errorMessage)
-//            setPositiveButton("Positive") { _: DialogInterface?, _: Int ->
-//                Toast.makeText(context, "Hello", Toast.LENGTH_SHORT).show()
-//            }
-//            setNegativeButton("Negative") { _, _ ->
-//                Toast.makeText(context, "Negative", Toast.LENGTH_SHORT).show()
-//            }
-            setNeutralButton("Neutral") { _, _ ->
-                //Toast.makeText(context, "Cerrar", Toast.LENGTH_SHORT).show()
+            setNeutralButton(R.string.cancel) { _, _ ->
             }
-//            setOnDismissListener {
-//                Toast.makeText(context, "Hello!!!", Toast.LENGTH_SHORT).show()
-//            }
-
         }.create().show()
-
-        //
     }
 
 

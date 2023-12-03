@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Vinilos</string>
+    <string name="nav_header_title">Menu</string>
+    <string name="nav_header_subtitle">" "</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="menu_home">Artists</string>
+    <string name="menu_albums">Albums</string>
+    <string name="menu_collectors">Collectionists</string>
+    <string name="title_albums">Albums</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="required">Required</string>
+    <string name="description">Description</string>
+    <string name="name">Name</string>
+    <string name="releaseDate">Release date</string>
+    <string name="cover">Cover</string>
+    <string name="genre">Genre</string>
+    <string name="label">Record label</string>
+    <string name="requiredName">Name is required</string>
+    <string name="requiredCover">Cover is required</string>
+    <string name="requiredDescription">Description is required</string>
+    <string name="requiredReleaseDate">Release date is required</string>
+    <string name="requiredGenre">Genre is required</string>
+    <string name="requiredRecordLabel">Record label is required</string>
+    <string name="add_song">Add song</string>
+    <string name="album_detail">Album detail</string>
+    <string name="length_track">Length</string>
+    <string name="success">Success</string>
+    <string name="track_added_success">Song added successfully</string>
+    <string name="track_added_error">Error adding track</string>
+    <string name="requiredLength">Length is required</string>
+    <string name="invalid_track_length">Length format is invalid</string>
+    <string name="tracks">Tracks</string>
+    <string name="create_album_success">Album created successfully</string>
+    <string name="create_album_error">Error creating album</string>
+    <string name="create_album">Create album</string>
+</resources>
