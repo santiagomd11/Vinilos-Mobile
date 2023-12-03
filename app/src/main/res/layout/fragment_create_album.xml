@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
+        android:contentDescription="Título crear album"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -36,7 +37,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textNameField"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:contentDescription="Escriba aquí nombre del álbum" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -61,7 +63,8 @@
             android:layout_width="match_parent"
             android:ellipsize="end"
             android:maxLines="1"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:contentDescription="Escriba aquí la url de la imagen cover" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -85,7 +88,8 @@
             android:id="@+id/textReleaseDateField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:focusable="false"/>
+            android:focusable="false"
+            android:contentDescription="Escriba aquí la fecha de lanzamiento" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -108,7 +112,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textDescriptionField"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:contentDescription="Escriba aquí la descripción del album" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -131,7 +136,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textGenreField"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:contentDescription="Escriba aquí el género del álbum" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -154,7 +160,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textLabelField"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:contentDescription="Escriba aquí el label" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -174,6 +181,7 @@
             android:id="@+id/saveAlbumButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:contentDescription="Botón guardar para almacenar el álbum"
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="15dp"
             android:layout_weight="1"
@@ -184,6 +192,7 @@
             android:id="@+id/cancelSaveAlbumButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:contentDescription="Botón cancelar para no almacenar el álbum"
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="15dp"
             android:layout_weight="1"

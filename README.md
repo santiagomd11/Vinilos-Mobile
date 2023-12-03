@@ -35,6 +35,13 @@ Any advise for common problems or issues.
 command to run if program contains helper info
 ```
 
+## Run test in expresso
+
+For run test in espresso is recommend remove animations in the device of test, you must open settings on the device and search "Remove animations" for enable this option, as is indicated in the next image:
+
+<img width="300" alt="Eliminar animaciones para test" src="https://github.com/santiagomd11/Vinilos-Mobile/assets/123957494/6da26439-6044-4e46-9da7-b0fe64ba985d">
+
+
 ## Authors
 
 Contributors names and contact info

@@ -37,7 +37,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textNameField"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:contentDescription="Escriba aquí el nombre de la canción" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -60,7 +61,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textLengthField"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:contentDescription="Escriba aquí el tamaño de la canción" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -81,7 +83,8 @@
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="15dp"
             android:layout_weight="1"
-            android:text="@string/save" />
+            android:text="@string/save"
+            android:contentDescription="Con este botón guarda la canción para el album" />
 
 
         <Button
@@ -91,7 +94,8 @@
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="15dp"
             android:layout_weight="1"
-            android:text="@string/cancel" />
+            android:text="@string/cancel"
+            android:contentDescription="Con este botón cancela el guardado de la canción para el album"  />
 
 
     </LinearLayout>
